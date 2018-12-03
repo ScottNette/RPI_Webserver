@@ -1,16 +1,17 @@
 <?php 
 
-$DateTime = $_GET["DateTime"];
-$Temp = $_GET["Temp"];
-$Humidity = $_GET["Humidity"];
-$Pressure = $_GET["Pressure"];
-$Wind = $_GET["Wind"];
-$WindDir = $_GET["WindDir"];
+
+if(isset($_POST['update']))
+{
+	
+$DateTime = $_POST["DateTime"];
+$Temp = $_POST["Temp"];
+$Humidity = $_POST["Humidity"];
+$Pressure = $_POST["Pressure"];
+$Wind = $_POST["Wind"];
 
 $servername = "127.0.0.1:3306";
 
-echo $WindDir;
-echo "\r";
 echo $Temp;
 echo "\r";
 echo $Humidity;
@@ -101,10 +102,18 @@ echo "\r";
 $conn->close();
 
 
-
+}
 
 ?>
 
+ <form action="<?php $_PHP_SELF ?>" method="post">
+  DateTime: <input type="datetime-local" name="DateTime"  value="2018-06-12T19:30" ><br>
+  Temp: <input type="text" name="Temp"><br>
+  Humidity: <input type="text" name="Humidity"><br>
+  Pressure: <input type="text" name="Pressure"><br>
+  Wind: <input type="text" name="Wind"><br>
+  <input type="submit" name = "update" value="Update">
+</form>
 
 <font face="century gothic" size="20px"?
 	<center>Hello World</center>

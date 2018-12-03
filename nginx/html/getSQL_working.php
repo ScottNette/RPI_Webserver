@@ -34,33 +34,22 @@ $result = $conn->query("SELECT *
  
 if (mysqli_num_rows($result) > 0) {
   
-    if ($type == "windSpd"){
+    if ($type == "wind"){
         $data = array("Date, Wind Speed\n");
-    } elseif ($type == "windDir"){
-        $data = array("Date, Wind direction\n");
-    } elseif ($type == "temp"){
-        $data = array("Date, Temperature\n");
-    } elseif ($type == "press"){
-        $data = array("Date, Pressure\n");
-    } elseif ($type == "humid"){
-        $data = array("Date, Humidity\n");
     }
-  
-
-
+    //$data = "_";
    //echo "ID	 	DateTime		TempOutCur		HumidityCur		PressOutCur		WindOutCur    WindDirOutCur<br>";
     while($row = mysqli_fetch_assoc($result)) {
     //   echo $row["ID"] . "," . $row["DateTime"] . "," . $row["TempOutCur"] . "," . $row["HumOutCur"] ."," . $row["PressOutCur"] ."," . $row["WindOutCur"] ."," . $row["WindDirOutCur"] . " <br>";
-        if ($type == "windSpd"){           
-            $data[] = implode("",array("*", str_replace("-","/",(string)$row['DateTime']),",", (string)$row['WindOutCur'],"\n"));
-        } elseif ($type == "windDir"){
-            $data[] = implode("",array("*", str_replace("-","/",(string)$row['DateTime']),",", (string)$row['WindDirOutCur'],"\n"));
-        } elseif ($type == "temp"){
-            $data[] = implode("",array("*", str_replace("-","/",(string)$row['DateTime']),",", (string)$row['TempOutCur'],"\n"));
-        } elseif ($type == "press"){
-            $data[] = implode("",array("*", str_replace("-","/",(string)$row['DateTime']),",", (string)$row['PressOutCur'],"\n"));
-        } elseif ($type == "humid"){
-            $data[] = implode("",array("*", str_replace("-","/",(string)$row['DateTime']),",", (string)$row['HumOutCur'],"\n"));
+        if ($type == "wind")
+        {
+            //$data = $data . (string)row["WindOutCur"]."\n"; // + "," + implode("",$row["WindOutCur"]) + "\n";
+            $data = implode("",array("", str_replace("-","/",(string)$row['DateTime']),",", (string)$row['WindOutCur'],"\n"));
+            echo $data;
+            //$data[]
+           // .echo (string)$row['DateTime'];
+           // echo "<br>";
+
         }
     
         //$data['ID'][] = $row["ID"];
@@ -75,9 +64,8 @@ if (mysqli_num_rows($result) > 0) {
     }
  }
 
- //echo "<br>";
 //$json = json_encode($data);
-echo str_replace(",*","\n",implode(",",$data));
+echo implode(",",$data);
 
 //echo $data;
 

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="dist/dygraph.css">
+    <title>hourly</title>
+    <script type="text/javascript" src="dist/dygraph.js"></script>    </script>
+</head>
+<body>
+        <body onload="updatePlot(36)">
+    <!-- num Data Points: <input type = 'text' id = 'numData' value = 5> <br /> -->
+
+    Use buttons below to change time scale!
+    <br>
+    <form name = 'myForm'>
+        <input type = 'button' onclick = 'updatePlot(5)' value = '3H'/>
+        <input type = 'button' onclick = 'updatePlot(12)' value = '6H'/>
+        <input type = 'button' onclick = 'updatePlot(20)' value = '12H'/>
+        <input type = 'button' onclick = 'updatePlot(99)' value = 'All'/>
+    </form>
+    <center>
+    <div id="WindSpeedChart" style="width:1000px; height:300px;"></div>
+    <div id="WindDirectionChart" style="width:1000px; height:300px;"></div>
+    <div id="TemperatureChart" style="width:1000px; height:300px;"></div>
+    <div id="PressureChart" style="width:1000px; height:300px;"></div>
+    <div id="HumidityChart" style="width:1000px; height:300px;"></div>
+    </center>
+     
+
+   <script type="text/javascript">
+ 
+
+        function updatePlot(numDataPoints){        
+            gws = new Dygraph(
+                document.getElementById("WindSpeedChart"),
+                "getSQL.php?numData=" + numDataPoints + "&type=windSpd",
+                { 
+                    fillGraph: true,
+                    color: 'green',
+                    colorValue: 1,
+                    showRangeSelector: true,
+                    title: "Wind Speed (MPH)",
+                    ylabel: "Wind Speed (MPH)", 
+                });
+            gwd = new Dygraph(
+                document.getElementById("WindDirectionChart"),
+                "getSQL.php?numData=" + numDataPoints + "&type=windSpd",
+                { 
+                    fillGraph: false,
+                    color: 'red',
+                    colorValue: 1,
+                    strokeWidth: 0,
+                    drawPoints: true,
+                    pointSize: 3,
+                    title: "Wind Direction(deg)",
+                    ylabel: "Wind Direction (deg)", 
+                });
+            gt = new Dygraph(
+                document.getElementById("TemperatureChart"),
+                "getSQL.php?numData=" + numDataPoints + "&type=temp",
+                { 
+                    fillGraph: true,
+                    color: 'blue',
+                    colorValue: 0.5,
+                    title: "Temperature (deg)",
+                    ylabel: "Temperature (deg)", 
+                });
+            gp = new Dygraph(
+                document.getElementById("PressureChart"),
+                "getSQL.php?numData=" + numDataPoints + "&type=press",
+                { 
+                    fillGraph: false,
+                    color: 'orange',
+                    colorValue: 1,
+                    title: "Standard Pressure (hPa)",
+                    ylabel: "Standard Pressure (hPa)", 
+                });
+             gh = new Dygraph(
+                document.getElementById("HumidityChart"),
+                "getSQL.php?numData=" + numDataPoints + "&type=humid",
+                { 
+                    fillGraph: false,
+                    strokeWidth: 0,
+                    drawPoints: true,
+                    pointSize: 3,
+                    title: "Humidity (%)",
+                    ylabel: "Humidity (%)", 
+                });
+
+
+        }
+  </script>
+
+
+
+  </body>
+</html>
