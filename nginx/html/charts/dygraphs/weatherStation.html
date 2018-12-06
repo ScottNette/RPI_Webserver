@@ -44,9 +44,6 @@
     -->
 
 
-
-
-
         <center>
             
         <style type="text/css">
@@ -76,6 +73,19 @@
                 
             </tr>
             <tr>
+
+            <th >   
+                    <div id="clouds">
+                            <div class="nuvem nuvem-1"></div>
+                            <div class="nuvem nuvem-2"></div>
+                            <div class="nuvem nuvem-3"></div>
+                            <div class="nuvem nuvem-4"></div>
+                            <div class="nuvem nuvem-5"></div>
+                        <div class="caixa"></div><i></i></div>
+                        
+
+                </th>
+
                 <th class="tg-0lax">
                         <table class="tg" style="undefined;table-layout: fixed; width: 263px;background-color: white;">
                                 <colgroup>
@@ -135,7 +145,8 @@
                             </div>
                             <style>.mapouter{text-align:right;height:280px;width:359px;}.gmap_canvas {overflow:hidden;background:none!important;height:280px;width:359px;}
                             </style>
-                    </div></th>
+                    </div>
+                </th>
             </tr>
             </table>
 
@@ -146,18 +157,34 @@
     
 
 
- 
         <body onload="updatePlot(36)">
     <!-- num Data Points: <input type = 'text' id = 'numData' value = 5> <br /> -->
-    <div id="zoomhelp" style="width:280px;background-color: white;">
-    Use buttons below to change time scale!
-    </div>
-      <form name = 'myForm' style="width:150px;background-color: white;">
+    <style>
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: black;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 24px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+<!--
+      <form name = 'myForm' style="background-color: white;">
         <input type = 'button' onclick = 'updatePlot(5)' value = '3H'/>
         <input type = 'button' onclick = 'updatePlot(12)' value = '6H'/>
         <input type = 'button' onclick = 'updatePlot(20)' value = '12H'/>
         <input type = 'button' onclick = 'updatePlot(99)' value = 'All'/>
     </form>
+    -->
+    <input type="button" class="button" onclick = 'updatePlot(5)' value="3H">
+    <input type="button" class="button" onclick = 'updatePlot(12)' value="6H">
+    <input type="button" class="button" onclick = 'updatePlot(20)' value="12H">
+    <input type="button" class="button" onclick = 'updatePlot(99)' value="All">
 
     <center>
     <div id="WindSpeedChart" style="width:1000px; height:300px;background-color: white;"></div>
@@ -175,9 +202,26 @@
      
 
    <script type="text/javascript">
+    function mobiledetect(){
+
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+            return true;
+            // Take the user to a different screen here.
+        } else {
+            return false;
+        }   
+
+    }
  
 
-        function updatePlot(numDataPoints){        
+        function updatePlot(numDataPoints){   
+            
+            if (mobiledetect()){
+                modelSelect = {};
+            } else{
+                modelSelect = Dygraph.defaultInteractionModel;
+            }
+            
             gws = new Dygraph(
                 document.getElementById("WindSpeedChart"),
                 "getSQL.php?numData=" + numDataPoints + "&type=windSpd",
@@ -186,9 +230,26 @@
                     color: 'green',
                     colorValue: 1,
                     showRangeSelector: true,
+                    interactionModel: modelSelect,
                     title: "Wind Speed (MPH)",
                     ylabel: "Wind Speed (MPH)", 
                 });
+                
+
+                window.intervalId = setInterval(
+                function(){
+                    var extents = gws.yAxisRange();
+                    var lowerExtent = extents[0];
+                    var upperExtent = extents[1];
+
+                    if(upperExtent > 60){
+                        var range = [lowerExtent, 60];
+                        gws.updateOptions({'valueRange': range});
+                        }   
+                    },
+                     500
+                    );
+
             gwd = new Dygraph(
                 document.getElementById("WindDirectionChart"),
                 "getSQL.php?numData=" + numDataPoints + "&type=windSpd",
@@ -199,6 +260,8 @@
                     strokeWidth: 0,
                     drawPoints: true,
                     pointSize: 3,
+                    showRangeSelector: true,
+                    interactionModel: modelSelect,
                     title: "Wind Direction(deg)",
                     ylabel: "Wind Direction (deg)", 
                 });
@@ -209,6 +272,8 @@
                     fillGraph: true,
                     color: 'blue',
                     colorValue: 0.5,
+                    showRangeSelector: true,
+                    interactionModel: modelSelect,
                     title: "Temperature (deg)",
                     ylabel: "Temperature (deg)", 
                 });
@@ -219,6 +284,9 @@
                     fillGraph: false,
                     color: 'orange',
                     colorValue: 1,
+                    strokeWidth: 2,
+                    showRangeSelector: true,
+                    interactionModel: modelSelect,
                     title: "Standard Pressure (hPa)",
                     ylabel: "Standard Pressure (hPa)", 
                 });
@@ -230,6 +298,7 @@
                     strokeWidth: 0,
                     drawPoints: true,
                     pointSize: 3,
+                    interactionModel: modelSelect,
                     title: "Humidity (%)",
                     ylabel: "Humidity (%)", 
                 });

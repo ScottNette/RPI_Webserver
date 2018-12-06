@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="icon" href="favicon.ico">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
+	<title>Chart.js samples</title>
+</head>
+<body>
+        <div id="graph_2015" class ="stats_box">
+            <h4>Graph 2015</h4>
+            Text
+            <canvas id="myChart" width="200" height="200"></canvas>
+			<canvas id="myChart2" width="200" height="200"></canvas>
+			<canvas id="myChart3" width="200" height="200"></canvas>
+        </div>
+<script>
+ var ctx = document.getElementById("myChart").getContext("2d");
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [1,2,3,4,5,6,7,8,9,10],
+            datasets: [
+                {
+                    label: "My First dataset",
+                    data: [1,2,3,2,1,2,3,4,5,4]
+                }
+            ]
+        },
+        options: {
+			responsive: false
+			scales: {
+				xAxes: [{
+				  type: 'time',
+				  time: {
+					unit: 'day',
+					unitStepSize: 1,
+					displayFormats: {
+					   'day': 'MMM DD'
+						}
+					}
+				}]
+			}
+		}
+		}
+	);
+	
+	
+	var ctx = document.getElementById("myChart2").getContext("2d");
+    var myChart2 = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [1,2,3,4,5,6,7,8,9,10],
+            datasets: [
+                {
+                    label: "My First dataset",
+                    data: [1,2,3,2,1,2,3,4,5,4]
+                }
+            ]
+        },
+        options: {
+			responsive: false
+        }
+    });
+	
+	var ctx = document.getElementById("myChart3").getContext("2d");
+    var myChart3 = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [1,2,3,4,5,6,7,8,9,10],
+            datasets: [
+                {
+                    label: "My First dataset",
+                    data: [1,2,3,2,1,2,3,4,5,4]
+                }
+            ]
+        },
+        options: {
+			responsive: false
+        }
+    });
+</script>
+</body>
+</html>
