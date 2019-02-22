@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="dist/dygraph.css">
+    <title>hourly</title>
+    <script type="text/javascript" src="dist/dygraph.js"></script>    </script>
+
+  
+ 
+     <link href="test.css" rel="stylesheet" type="text/css">
+
+     <style>
+            body  {
+                background-image: url("background.jpg");
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+            }
+
+             /* Set the size of the div element that contains the map */
+            #map {
+                height: 400px;  /* The height is 400 pixels */
+                width: 100%;  /* The width is the width of the web page */
+            }
+        </style>
+
+</head>
+<body>
+
+    <!-- 
+    <script>
+        // Initialize and add the map
+        function initMap() {
+        // The location of Uluru
+        var box = {lat: 31.81729, lng: -110.78719};
+        // The map, centered at Uluru
+        var map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 4, center: box});
+        // The marker, positioned at Uluru
+        var marker = new google.maps.Marker({position: box, map: map});
+        }       
+    </script>
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5oVQi8axCgN-A313IjQeYZuJRR8j6aas&callback=initMap">
+        </script>
+
+    -->
+
+
+        <center>
+            
+        <style type="text/css">
+            .tg2  {border-collapse:collapse;border-spacing:0;}
+            .tg2 td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+            .tg2 th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+            .tg2 .tg2-0lax{text-align:left;vertical-align:top}
+            .tg2 .tg2-0lay{text-align:left;vertical-align:top;font-family:Arial, sans-serif;font-size:24px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;background-color:#656565;color:#ffffff;}
+            </style>
+
+            
+        <style type="text/css">
+            .tg  {border-collapse:collapse;border-spacing:0;}
+            .tg td{font-family:Arial, sans-serif;font-size:14px;padding:4px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+            .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:4px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+            .tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top}
+            .tg .tg-baqh{text-align:center;vertical-align:top}
+            .tg .tg-c8dp{background-color:#656565;color:#ffffff;text-align:left;vertical-align:top}
+            .tg .tg-0lax{text-align:left;vertical-align:top}
+        </style>
+
+
+
+<div id="clouds">
+        <div class="nuvem nuvem-1"></div>
+        <div class="nuvem nuvem-2"></div>
+        <div class="nuvem nuvem-3"></div>
+        <div class="nuvem nuvem-4"></div>
+        <div class="nuvem nuvem-5"></div>
+</div>
+
+
+
+
+            <table class="tg2" style ="background-color: white;" >
+                    <col width="230">
+
+            <tr style="background-color: white;" >
+                    <th class="tg2-0lay" colspan="3">Box Canyon Weather Station</th>
+                
+            </tr>
+            <tr>
+
+            <th >   
+                   
+                    <div class="caixa"></div> <i></i>   
+
+                </th>
+
+                <th class="tg-0lax">
+                        <table class="tg" style="undefined;table-layout: fixed; width: 263px;background-color: white;">
+                                <colgroup>
+                                <col style="width: 36px">
+                                <col style="width: 41px">
+                                <col style="width: 66px">
+                                <col style="width: 44px">
+                                <col style="width: 53px">
+                                <col style="width: 23px">
+                                </colgroup>
+                                  <tr>
+                                    <th class="tg-c8dp" colspan="3">Wind Now</th>
+                                    <th class="tg-c8dp" colspan="3">Wind Tendency</th>
+                                  </tr>
+                                  <tr>
+                                    <td class="tg-0lax">5</td>
+                                    <td class="tg-1wig">mph</td>
+                                    <td class="tg-0lax">NWN</td>
+                                    <td class="tg-0lax">Calm</td>
+                                    <td class="tg-0lax">21deg</td>
+                                    <td class="tg-0lax">N</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="tg-c8dp" colspan="3">Temperature</td>
+                                    <td class="tg-c8dp" colspan="3">Wind Avg</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="tg-baqh" rowspan="3"><br><br>86F</td>
+                                    <td class="tg-0lax">86 F</td>
+                                    <td class="tg-1wig">Average</td>
+                                    <td class="tg-0lax">3-5</td>
+                                    <td class="tg-1wig">mph</td>
+                                    <td class="tg-0lax">N</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="tg-0lax">96F </td>
+                                    <td class="tg-1wig">High</td>
+                                    <td class="tg-0lax">Std. Pressure</td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="tg-0lax">72F </td>
+                                    <td class="tg-1wig">Low</td>
+                                    <td class="tg-0lax">1152</td>
+                                    <td class="tg-1wig">hPa</td>
+                                    <td class="tg-0lax"></td>
+                                  </tr>
+                                </table>
+
+
+                </th>
+                <th class="tg2-0lax">    <div class="mapouter">
+                        <div class="gmap_canvas">
+                            <iframe width="359" height="280" id="gmap_canvas" src="https://maps.google.com/maps?q=31.81729%2C%20-110.78719&t=&z=12&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                                </iframe><a href="https://www.pureblack.de/webdesign-koeln/"></a>
+                            </div>
+                            <style>.mapouter{text-align:right;height:280px;width:359px;}.gmap_canvas {overflow:hidden;background:none!important;height:280px;width:359px;}
+                            </style>
+                    </div>
+                </th>
+            </tr>
+            </table>
+
+
+
+
+        </center>
+    
+
+
+        <body onload="updatePlot(36)">
+    <!-- num Data Points: <input type = 'text' id = 'numData' value = 5> <br /> -->
+    <style>
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: black;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 24px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+<!--
+      <form name = 'myForm' style="background-color: white;">
+        <input type = 'button' onclick = 'updatePlot(5)' value = '3H'/>
+        <input type = 'button' onclick = 'updatePlot(12)' value = '6H'/>
+        <input type = 'button' onclick = 'updatePlot(20)' value = '12H'/>
+        <input type = 'button' onclick = 'updatePlot(99)' value = 'All'/>
+    </form>
+    -->
+    <center>
+    <input type="button" class="button" onclick = 'updatePlot(5)' value="3H">
+    <input type="button" class="button" onclick = 'updatePlot(12)' value="6H">
+    <input type="button" class="button" onclick = 'updatePlot(20)' value="12H">
+    <input type="button" class="button" onclick = 'updatePlot(99)' value="All">
+
+    
+    <div id="WindSpeedChart" style="width:1000px; height:300px;background-color: white;"></div>
+    <div id="chartHelp" style="width:1000px; height:10;background-color: white;">
+            ^^^^^^^^Use slider to change time scale ^^^^^^^^
+    </div>
+    
+   
+
+    <div id="WindDirectionChart" style="width:1000px; height:300px;background-color: white;"></div>
+    <div id="TemperatureChart" style="width:1000px; height:300px;background-color: white;"></div>
+    <div id="PressureChart" style="width:1000px; height:300px;background-color: white;"></div>
+    <div id="HumidityChart" style="width:1000px; height:300px;background-color: white;"></div>
+    </center>
+     
+
+   <script type="text/javascript">
+    function mobiledetect(){
+
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+            return true;
+            // Take the user to a different screen here.
+        } else {
+            return false;
+        }   
+
+    }
+ 
+
+        function updatePlot(numDataPoints){   
+            
+            if (mobiledetect()){
+                modelSelect = {};
+            } else{
+                modelSelect = Dygraph.defaultInteractionModel;
+            }
+            
+            gws = new Dygraph(
+                document.getElementById("WindSpeedChart"),
+                "getSQL.php?numData=" + numDataPoints + "&type=windSpd",
+                { 
+                    fillGraph: true,
+                    color: 'green',
+                    colorValue: 1,
+                    showRangeSelector: true,
+                    interactionModel: modelSelect,
+                    title: "Wind Speed (MPH)",
+                    ylabel: "Wind Speed (MPH)", 
+                });
+                
+
+                window.intervalId = setInterval(
+                function(){
+                    var extents = gws.yAxisRange();
+                    var lowerExtent = extents[0];
+                    var upperExtent = extents[1];
+
+                    if(upperExtent > 60){
+                        var range = [lowerExtent, 60];
+                        gws.updateOptions({'valueRange': range});
+                        }   
+                    },
+                     500
+                    );
+
+            gwd = new Dygraph(
+                document.getElementById("WindDirectionChart"),
+                "getSQL.php?numData=" + numDataPoints + "&type=windSpd",
+                { 
+                    fillGraph: false,
+                    color: 'red',
+                    colorValue: 1,
+                    strokeWidth: 0,
+                    drawPoints: true,
+                    pointSize: 3,
+                    showRangeSelector: true,
+                    interactionModel: modelSelect,
+                    title: "Wind Direction(deg)",
+                    ylabel: "Wind Direction (deg)", 
+                });
+            gt = new Dygraph(
+                document.getElementById("TemperatureChart"),
+                "getSQL.php?numData=" + numDataPoints + "&type=temp",
+                { 
+                    fillGraph: true,
+                    color: 'blue',
+                    colorValue: 0.5,
+                    showRangeSelector: true,
+                    interactionModel: modelSelect,
+                    title: "Temperature (deg)",
+                    ylabel: "Temperature (deg)", 
+                });
+            gp = new Dygraph(
+                document.getElementById("PressureChart"),
+                "getSQL.php?numData=" + numDataPoints + "&type=press",
+                { 
+                    fillGraph: false,
+                    color: 'orange',
+                    colorValue: 1,
+                    strokeWidth: 2,
+                    showRangeSelector: true,
+                    interactionModel: modelSelect,
+                    title: "Standard Pressure (hPa)",
+                    ylabel: "Standard Pressure (hPa)", 
+                });
+             gh = new Dygraph(
+                document.getElementById("HumidityChart"),
+                "getSQL.php?numData=" + numDataPoints + "&type=humid",
+                { 
+                    fillGraph: false,
+                    strokeWidth: 0,
+                    drawPoints: true,
+                    pointSize: 3,
+                    interactionModel: modelSelect,
+                    title: "Humidity (%)",
+                    ylabel: "Humidity (%)", 
+                });
+
+
+        }
+  </script>
+
+
+
+  </body>
+</html>
